@@ -1,0 +1,17 @@
+.card-container{
+    height:100px;
+    padding:20px;
+    margin-top: 15px;
+}
+.info-container{
+    padding: 0px 5px;
+}
+.info-primary{
+    background-color: aliceblue;
+}
+.info-dark{
+    background-color: aquamarine;
+}
+.icon-info{
+    font-size: 3em;
+}
