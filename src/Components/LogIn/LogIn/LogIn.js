@@ -1,24 +1,30 @@
-import React from 'react';
-import signBg from '../../images/Group 140.png'
+import React, { useContext } from 'react';
+import signBg from '../../../images/Group 140.png'
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import UserContext from '../../../App'
 import firebaseConfig from './firebase.config'
 const LogIn = () => {
+
 
 
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
       }
 
+    // const[signInUser, setSignInUser] = useContext(UserContext);
 
     const handleGoogleSignIn = () =>{
-        const provider = new firebase.auth.GoogleAuthProvider();
+
+       const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
         .then((result) => {
 
-            const user = result.user;
-            console.log(user)
+            const { displayName, email} = result.user;
+            const signedInUser = {name:displayName, email}
+            console.log(signedInUser)
+            // setSignInUser(signedInUser)
            
         }).catch((error) => {
         
